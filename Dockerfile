@@ -5,6 +5,7 @@ RUN apk add --no-cache --virtual .pipeline-deps readline linux-pam \
   && apk del .pipeline-deps
 RUN apk add --no-cache curl docker-cli
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.21.1
+RUN curl -LO "https://dl.k8s.io/release/v1.22.4/bin/linux/amd64/kubectl" && chmod +x kubectl && mv kubectl /usr/local/bin/
 
 LABEL "com.azure.dev.pipelines.agent.handler.node.path"="/usr/local/bin/node"
 
