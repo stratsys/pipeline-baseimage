@@ -1,0 +1,40 @@
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: stratsys/Pipeline.Templates
+      ref: k8s
+      endpoint: "stratsys"
+
+variables:
+  - name: RELEASE_BRANCH
+    value: $(Build.SourceBranchName)
+  - name: COMPLETE_RELEASE_BRANCH
+    value: $(Build.SourceBranch)
+  - name: GIT_COMMIT_SHA
+    value: $(Build.SourceVersion)
+  - group: "Github-Playbook"
+  - group: "Azure Key Vault"
+
+#trigger:
+#  - master
+#  - feature-*
+
+pool: "Linux-docker"
+
+
+stages:
+- stage: DirectFlight
+  jobs:
+  - job: CI_BuildImage
+    container:
+      image: registry.proxy.office.stratsys.net/library/pipeline-baseimage:latest
+    continueOnError: false
+    steps:
+    - script: docker login --username ${OFFICEREGISTRYUSERNAME} --password ${OFFICEREGISTRYPASSWORD} ${OFFICEREGISTRYURI}
+      env:
+        OFFICEREGISTRYURI:      $(OFFICEREGISTRYURI)
+        OFFICEREGISTRYUSERNAME: $(OFFICEREGISTRYUSERNAME)
+        OFFICEREGISTRYPASSWORD: $(OFFICEREGISTRYPASSWORD)
+    - script: docker build -t registry.proxy.office.stratsys.net/library/pipeline-baseimage:stable .
+    - script: docker oush registry.proxy.office.stratsys.net/library/pipeline-baseimage:stable
