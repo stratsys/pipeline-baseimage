@@ -16,8 +16,8 @@ variables:
   - group: "Github-Playbook"
   - group: "Azure Key Vault"
 
-#trigger:
-#  - master
+trigger:
+  - master
 #  - feature-*
 
 pool: "Linux-docker"
