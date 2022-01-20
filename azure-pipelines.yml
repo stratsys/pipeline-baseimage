@@ -27,8 +27,8 @@ stages:
 - stage: DirectFlight
   jobs:
   - job: CI_BuildImage
-    container:
-      image: registry.proxy.office.stratsys.net/library/pipeline-baseimage:latest
+    #container:
+    #  image: registry.proxy.office.stratsys.net/library/pipeline-baseimage:latest
     continueOnError: false
     steps:
     - script: docker login --username ${OFFICEREGISTRYUSERNAME} --password ${OFFICEREGISTRYPASSWORD} ${OFFICEREGISTRYURI}
