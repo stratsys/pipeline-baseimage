@@ -1,4 +1,4 @@
-FROM node:17.1-alpine3.14
+FROM mcr.microsoft.com/azure-cli
 
 RUN apk add --no-cache --virtual .pipeline-deps readline linux-pam \
   && apk add bash sudo shadow \
@@ -9,6 +9,7 @@ RUN curl -o /usr/local/bin/kubectl -L "https://dl.k8s.io/release/v1.22.4/bin/lin
 RUN curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | DESIRED_VERSION=v3.7.1 bash 
 RUN mkdir -p /root/.helm/plugins
 RUN helm plugin install https://github.com/chartmuseum/helm-push.git
+
 LABEL "com.azure.dev.pipelines.agent.handler.node.path"="/usr/local/bin/node"
 
 CMD [ "/bin/bash" ]
