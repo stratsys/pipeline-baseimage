@@ -1,7 +1,7 @@
 FROM docker.io/node:17.1-alpine3.14
 
 RUN apk add --no-cache --virtual .pipeline-deps readline linux-pam \
-  && apk add bash sudo shadow jq \
+  && apk add bash sudo shadow jq yq \
   && apk del .pipeline-deps
 RUN wget -O /usr/bin/yq https://github.com/mikefarah/yq/releases/download/v4.24.5/yq_linux_amd64 && chmod +x /usr/bin/yq
 RUN apk add --no-cache curl openssl docker-cli git
