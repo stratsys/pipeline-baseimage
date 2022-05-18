@@ -1,4 +1,4 @@
-FROM docker.io/node:17.1-alpine3.14
+FROM docker.io/node:18-alpine3.15
 
 RUN apk add --no-cache --virtual .pipeline-deps readline linux-pam \
   && apk add bash sudo shadow jq sed \
