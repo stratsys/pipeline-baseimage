@@ -17,9 +17,5 @@ RUN curl -o /usr/local/bin/kubectl -L "https://dl.k8s.io/release/v1.28.5/bin/lin
     echo "$(cat /usr/local/bin/kubectl.sha256)  /usr/local/bin/kubectl" | sha256sum -c - && \
     chmod +x /usr/local/bin/kubectl
 
-# Add Helper script [git-go]
-COPY src/git-go    /bin/
-COPY src/common.sh /bin/
-
 LABEL "com.azure.dev.pipelines.agent.handler.node.path"="/usr/local/bin/node"
 CMD [ "/bin/bash" ]
