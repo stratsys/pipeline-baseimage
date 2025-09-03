@@ -5,7 +5,7 @@ SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 
 # Install base packages and Azure DevOps dependencies
 RUN apk add --no-cache --virtual .pipeline-deps readline linux-pam && \
-    apk add --no-cache bash sudo shadow jq curl openssl docker-cli docker-cli-buildx git openssh-client yq ca-certificates && \
+    apk add --no-cache bash sudo shadow jq curl openssl docker-cli docker-cli-buildx git openssh-client yq ca-certificates minio-client && \
     apk del .pipeline-deps
 
 # Resolve Dependencies [trivy]
