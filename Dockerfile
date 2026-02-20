@@ -24,7 +24,7 @@ RUN curl -o /usr/local/bin/kubectl -L "https://dl.k8s.io/release/v1.33.8/bin/lin
 RUN curl -o /usr/local/bin/hadolint -L "https://github.com/hadolint/hadolint/releases/download/v2.14.0/hadolint-Linux-x86_64" && chmod +x /usr/local/bin/hadolint
 
 # Install k6
-RUN curl -L "https://github.com/grafana/k6/releases/download/v0.51.0/k6-v0.51.0-linux-amd64.tar.gz" \
+RUN curl -L "https://github.com/grafana/k6/releases/download/v1.6.1/k6-v1.6.1-linux-amd64.tar.gz" \
     | tar xz -C /tmp && \
     mv /tmp/k6-v1.6.1-linux-amd64/k6 /usr/local/bin/k6 && \
     chmod +x /usr/local/bin/k6 && \
