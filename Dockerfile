@@ -11,7 +11,7 @@ RUN apk add --no-cache --virtual .pipeline-deps readline linux-pam && \
 # Resolve Dependencies [trivy]
 RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.66.0
 
-# Resolve Dependencies [Helm]
+# Resolve Dependencies [Helm] 
 RUN curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | DESIRED_VERSION=v3.20.0 bash
 
 # Resolve Dependencies [ArgoCD]
